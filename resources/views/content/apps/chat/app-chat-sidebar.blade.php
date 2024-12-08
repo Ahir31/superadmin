@@ -13,6 +13,7 @@
       <h4 class="chat-user-name">John Doe</h4>
       <span class="user-post">Admin</span>
     </div>
+    <p> hello</p>
     <!--/ User Information -->
   </header>
   <!-- User Details start -->
