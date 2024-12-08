@@ -15,6 +15,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ChartsController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,13 @@ use App\Http\Controllers\ChartsController;
 */
 
 // Main Page Route
-Route::get('/', [DashboardController::class, 'dashboardEcommerce'])->name('dashboard-ecommerce');
+Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'checkLogin'])->name('login.check-login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+
 
 
 /* Route Dashboards */

@@ -359,16 +359,17 @@
           href="{{ Route::has('profile.show') ? route('profile.show') : 'javascript:void(0)' }}">
           <i class="me-50" data-feather="user"></i> Profile
         </a>
-        @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
+        {{-- @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
           <a class="dropdown-item" href="{{ route('api-tokens.index') }}">
             <i class="me-50" data-feather="key"></i> API Tokens
           </a>
-        @endif
+        @endif --}}
         <a class="dropdown-item" href="#">
           <i class="me-50" data-feather="settings"></i> Settings
         </a>
 
-        @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
+        {{--
+         @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Manage Team</h6>
           <div class="dropdown-divider"></div>
@@ -392,9 +393,9 @@
               {{-- Below commented code read by artisan command while installing jetstream. !! Do not remove if you want to use jetstream. --}}
 
               {{-- <x-jet-switchable-team :team="$team" /> --}}
-            @endforeach
+            {{-- @endforeach
           @endif
-        @endif
+        @endif  --}}
         @if (Auth::check())
           <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

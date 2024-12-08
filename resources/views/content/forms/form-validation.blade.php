@@ -259,4 +259,45 @@
 @section('page-script')
   <!-- Page js files -->
   <script src="{{ asset(mix('js/scripts/forms/form-validation.js')) }}"></script>
+   <script>
+        $(document).ready(function () {
+            // Configure Toastr
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000",
+            };
+
+            // Display backend errors
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error("{{ $error }}");
+                @endforeach
+            @endif
+
+            // Display success messages
+            @if (session('success'))
+                toastr.success("{{ session('success') }}");
+            @endif
+
+            // Frontend validation
+            $('#loginForm').on('submit', function (e) {
+                let username = $('#login-email').val().trim();
+                let password = $('#login-password').val().trim();
+
+                if (username === '') {
+                    e.preventDefault();
+                    toastr.error('Username is required.');
+                    return;
+                }
+
+                if (password === '') {
+                    e.preventDefault();
+                    toastr.error('Password is required.');
+                    return;
+                }
+            });
+        });
+    </script>
 @endsection
